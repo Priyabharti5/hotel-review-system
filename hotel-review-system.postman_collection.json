@@ -1,0 +1,1679 @@
+{
+	"info": {
+		"_postman_id": "dfabc4a5-ff37-48c8-aa63-91294a77022f",
+		"name": "Hotel-Review-System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40605008"
+	},
+	"item": [
+		{
+			"name": "Auth-Service",
+			"item": [
+				{
+					"name": "1. Register Normal User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Chandu KS\",\n    \"email\": \"chandu@gmail.com\",\n    \"mobile\": \"9988776644\",\n    \"about\": \"I am a doctor.\",\n    \"password\": \"normal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Register Hotel Owner (user)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Chandu KS\",\n    \"email\": \"chandu@gmail.com\",\n    \"mobile\": \"9988776644\",\n    \"about\": \"I am a doctor.\",\n    \"password\": \"normal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/hotel-manager-user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"hotel-manager-user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Register Admin User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"admin1\",\n    \"password\": \"admin1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/admin/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"7274139248\",\n    \"password\": \"normal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Change User Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{another_hotel_user\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"7357451628\",\n    \"oldPassword\": \"normal\", \n    \"newPassword\": \"hotel\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Update User Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"admin1\",\n    \"status\": \"DELETED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/admin/user/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"user",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Update Hotel Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hotelId\": \"2956816374\",\n    \"status\": \"INACTIVE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/admin/hotel/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"hotel",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Update Review Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reviewId\": \"4116632748\",\n    \"status\": \"ACTIVE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/admin/review/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"review",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. Get All Admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10. Get All Active Admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/admin/users/active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"users",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11. Get Deleted Admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/admin/users/deleted",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"users",
+								"deleted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12. Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User-Service",
+			"item": [
+				{
+					"name": "1. Get User by Id(userId)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{another_hotel_user\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/7357451628",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"7357451628"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get User By Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{another_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/email/rajni.rudrapriyak@gmail.com",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"email",
+								"rajni.rudrapriyak@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get User By Mobile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/mobile/9988776655",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"mobile",
+								"9988776655"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{another_hotel_user\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Rajni Rudrapriya\",\n    \"mobile\": \"9988776655\",\n    \"email\": \"rajni.rudrapriya@gmail.com\",\n    \"about\": \"I am a doctor.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/users/7357451628",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"7357451628"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{another_hotel_user\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/users/7357451628",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"7357451628"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Get User by ReviewId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{another_hotel_user\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/review/4116632748",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"review",
+								"4116632748"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get All Active Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/active",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. Get All Active Hotel Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/hotel-owner/active",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"hotel-owner",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10. Get All Active Normal Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/normal-user/active",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"normal-user",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11. Get All Deleted Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/deleted",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"deleted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12. Get All Deleted Hotel Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/hotel-owner/deleted",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"hotel-owner",
+								"deleted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "13. Get All Deleted Normal Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users/normal-user/deleted",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"normal-user",
+								"deleted"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel-Service",
+			"item": [
+				{
+					"name": "1. Register new Hotel by Hotel-Owner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hotel_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"PGs of Hotels\",\n    \"location\": \"New Delhi, India\",\n    \"about\": \"Premium hotel offering world-class hospitality.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1. Register new Hotel by Admin User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ownerUsername\": \"5364142626\",\n    \"name\": \"Wanderlust Hotel\",\n    \"location\": \"Rajasthan, India\",\n    \"about\": \"Hotel for family where you can enjoy.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Hotel By hotelId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/7610989107",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"7610989107"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get All Hotels",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Search Hotel By name (partial)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/search/name/pb",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"search",
+								"name",
+								"pb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Search Hotel By partial location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{another_hotel_user\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/search/location/delhi",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"search",
+								"location",
+								"delhi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Update Hotel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hotel_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"The PG Groups of Hotels\",\n    \"location\": \"New Delhi, India\",\n    \"about\": \"Premium hotel offering world-class hospitality.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/7610989107",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"7610989107"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Delete Hotel (by hotelId)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hotel_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/7610989107",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"7610989107"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get Hotels By OwnerId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/owner/5364142626",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"owner",
+								"5364142626"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. Get Hotels By OwnerId and Location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hotel_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/owner/5364142626/location/india",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"owner",
+								"5364142626",
+								"location",
+								"india"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10. Get Hotels By OwnerId and HotelName",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hotel_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/owner/5364142626/search/name/Pb",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"owner",
+								"5364142626",
+								"search",
+								"name",
+								"Pb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11. Get All Hotels by rating values",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hotel_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/rating/eq/0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"rating",
+								"eq",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12. Get All Hotels by rating values and Location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hotel_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/location/india/rating/0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"location",
+								"india",
+								"rating",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "13. Get All Inactive Hotels",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/deleted",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"deleted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "14. Get All Hotels Reviewed By User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/reviewed/8552821871",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"reviewed",
+								"8552821871"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "15. Get Hotel By ReviewId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/hotels/review/8597342506",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"review",
+								"8597342506"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review-Service",
+			"item": [
+				{
+					"name": "1. Create Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"8552821871\",\n    \"hotelId\": \"6589189314\",\n    \"rating\": 4.9,\n    \"comment\": \"((== ... Bad environment. Too much noisy. .... !!! ==))\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/reviews",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Review by ID(reviewId)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{another_hotel_user\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/reviews/1547441144",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"1547441144"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get All Reviews",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/reviews",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get Reviews By UserId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/reviews/user/8552821871",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"user",
+								"8552821871"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get Reviews by hotelId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/reviews/hotel/8213778905",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"hotel",
+								"8213778905"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Update Review By ReviewId(Comment only)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"6394439038\",\n    \"hotelId\": \"1919565959\",\n    \"comment\": \"((== ... Nice Experience in Delhi. Love it!!!! .... !!! ==))\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/reviews/8193247540",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"8193247540"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Delete Review By ReviewId (Soft Delete)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/reviews/8597342506",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"8597342506"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get Avg. Hotel Rating By HotelId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{hotel_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/reviews/hotel/7797913534/avg-rating",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"hotel",
+								"7797913534",
+								"avg-rating"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNzU2NjkyNDI2LCJleHAiOjE3NTY2OTYwMjZ9.C22R38hbRJVrxgL0UFuNTUbsspfnanQBuNPaxltK9dWkVWJKYl6UV3QIC34u7UMttB-yOvwklEpQclMCBU2K4w"
+		},
+		{
+			"key": "admin_token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNzU2NjkyNDI2LCJleHAiOjE3NTY2OTYwMjZ9.C22R38hbRJVrxgL0UFuNTUbsspfnanQBuNPaxltK9dWkVWJKYl6UV3QIC34u7UMttB-yOvwklEpQclMCBU2K4w"
+		},
+		{
+			"key": "user_token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0NzEyODU0NDc5Iiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTc1NjY5NTAzOSwiZXhwIjoxNzU2Njk4NjM5fQ.U0wJoG_mWyakx2krmHncH3HRWoAE-QerrZT8Jza0RtqRDA8EKiXwIpddq0qJzLWuzGHMTWAZv_3PLv2wNpMUMQ"
+		},
+		{
+			"key": "hotel_user_token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4MzQxODY0NjkyIiwicm9sZSI6IlJPTEVfSE9URUxfTUFOQUdFUiIsImlhdCI6MTc1NjY5MjU0NSwiZXhwIjoxNzU2Njk2MTQ1fQ.XzMrM2YnCSjxNmAKZFWt2TVSyXN_VjsoGV44xATcYni0_lthaq9eGXOZTrl_zEIu8QIFS8G6MwbYq6AbjglFig"
+		},
+		{
+			"key": "another_user",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyOTQ5MTYyNTE4Iiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTc1NzIzNDUyOCwiZXhwIjoxNzU3MjM4MTI4fQ.FqNvmiWEhJ7Ny36MzVabLY9lZIlUClOXeH-8xCHDCJ90JeNIKXEopCppkzWygmBcig_FM_rCvOLf3MRG89GugA"
+		},
+		{
+			"key": "another_hotel_user\n",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyNTA5MTI3NzU2Iiwicm9sZSI6IlJPTEVfSE9URUxfTUFOQUdFUiIsImlhdCI6MTc1NzQ5ODE0MSwiZXhwIjoxNzU3NTAxNzQxfQ.BGE96xKtoe7NKzZUR4UPK9Mub6e_ew3l1Px4fbyrFchUXUs3k-wBsZwEnr21V6nFJuniPF_gzqN3R_a77xBGAg",
+			"type": "string"
+		}
+	]
+}

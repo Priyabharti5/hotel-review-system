@@ -1,0 +1,23 @@
+server:
+  port: 8888
+
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Priyabharti5/config-server
+          # Optional - if your repo is private, add username/password or SSH config
+          # username: your-git-username
+          # password: your-git-password
+          # search-paths: 'configurations' # if configs are inside a subfolder
+  # Actuator endpoints (optional)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,43 @@
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+### Gradle ###
+.gradle/
+build/
+
+### IDEs ###
+*.iml
+.idea/
+.vscode/
+*.class
+*.log
+
+### OS files ###
+.DS_Store
+Thumbs.db
+
+### Logs & temp ###
+logs/
+*.log
+*.out
+*.tmp
+
+### Environment & secrets ###
+*.env
+*.local
+application-*-secret.yml
+application-*-secrets.yml
+application-prod.yml
+application-prod.properties
+
+### Node (if frontend exists) ###
+node_modules/
+dist/
+
+### Postman ###
+*.postman_environment.json
